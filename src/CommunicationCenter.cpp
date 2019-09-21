@@ -32,11 +32,11 @@ CommunicationCenter::~CommunicationCenter(){
 void CommunicationCenter::startDroneConnection(){
 	std::cout<<"Connecting to drone\n";
 	maxRetries--;
-	std::string request = "command";
-	send(request.c_str(),request.length());
+	const char* cmdOut = messageC->encode("command");
+	send(cmdOut,strlen(cmdOut));
 	receive(received);
 	std::string mess(received);
-	std::cout<<mess<<std::endl;
+	std::cout<<messageC->decode(received)<<std::endl;
 	sleep(1);
 	if(mess != "ok" && maxRetries>0)
 		startDroneConnection();

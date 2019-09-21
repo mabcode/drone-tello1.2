@@ -1,6 +1,8 @@
 //To connect to socket, code used from https://github.com/butcherg/DatagramSocket/blob/master
 #pragma once
 
+#include "Message/MessageCenter.hpp"
+
 #include <netinet/in.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -20,6 +22,8 @@ class CommunicationCenter {
 		struct sockaddr_in cliaddr, servaddr ;
 		int maxRetries;
 		char received[50];
+		MessageCenter *messageC;
+
 
 	public:
 		CommunicationCenter(int port, char* address, bool isSim =false);

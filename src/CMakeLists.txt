@@ -33,8 +33,8 @@ add_executable(
 	Mission/Mission2.hpp
 	Mission/Mission3.cpp
 	Mission/Mission3.hpp
-	Message/Message.hpp
-	Message/Message.cpp
+	Message/MessageCenter.hpp
+	Message/MessageCenter.cpp
 )
 
 add_executable(
@@ -42,8 +42,8 @@ add_executable(
 	simulator.cpp
 	CommunicationCenter.cpp
 	CommunicationCenter.hpp
-	Message/Message.hpp
-	Message/Message.cpp
+	Message/MessageCenter.hpp
+	Message/MessageCenter.cpp
 )
 
 

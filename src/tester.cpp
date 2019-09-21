@@ -9,6 +9,7 @@
 #include "Mission/Mission1.cpp"
 #include "Mission/Mission2.cpp"
 #include "Mission/Mission3.cpp"
+#include "Message/MessageCenter.cpp"
 
 #define PORT 8889
 #define IPADDRESS "127.0.0.1"
