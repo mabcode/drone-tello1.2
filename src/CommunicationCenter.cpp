@@ -1,19 +1,23 @@
 #include "CommunicationCenter.hpp"
 #include <iostream>
 
-#include <string>
 
 CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	retval=0;
 	maxRetries=3;
+	stop_thread=false;
     socketDatagram = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
 
     //set up bind address
     memset(&servaddr,0,sizeof(servaddr));
     servaddr.sin_family = AF_INET;
 	servaddr.sin_port = htons(port);
-    servaddr.sin_addr.s_addr = inet_addr(address);
-    
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+	// memset(&statusaddr,0,sizeof(statusaddr));
+    // servaddr.sin_family = AF_INET;
+	// servaddr.sin_port = htons(8090);
+    // servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
 	if(isSim){
     	//set up address to use for sending
@@ -23,22 +27,32 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
     	cliaddr.sin_addr.s_addr = htonl(INADDR_ANY);	
     	retval = bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
 	}
+
+	
+}
+
+void CommunicationCenter::getStatusFromDrone(void){
+	while(1){
+		std::cout<<"good!\n";
+		sleep(1);
+	}
 }
 
 CommunicationCenter::~CommunicationCenter(){
 	 close(socketDatagram);
+	 stop_thread=true;
 }	
 
 void CommunicationCenter::startDroneConnection(){
 	std::cout<<"Connecting to drone\n";
 	maxRetries--;
-	const char* cmdOut = messageC->encode("command");
-	send(cmdOut,strlen(cmdOut));
-	receive(received);
+	std::string request = "command";
+	send(request.c_str(),request.length());
+	int temp = receive(received);
 	std::string mess(received);
-	std::cout<<messageC->decode(received)<<std::endl;
+	std::cout<<mess<<std::endl;
 	sleep(1);
-	if(mess != "ok" && maxRetries>0)
+	if(temp <= 0 && maxRetries>0)
 		startDroneConnection();
 	if(maxRetries==0){
 		std::cout<<"Could not connect to drone!!\n";
@@ -72,15 +86,17 @@ long CommunicationCenter::send(const char* command, int commandLength){
 int CommunicationCenter::receive(char* msg){
 	if(retval==0){
     	socklen_t sendersize = sizeof(servaddr);
-		int rettemp = recvfrom(socketDatagram,msg,sendersize,0, (struct sockaddr *)&servaddr, &		sendersize);
+		int rettemp = recvfrom(socketDatagram,msg,sendersize,0, (struct sockaddr *)&servaddr, &sendersize);
     	return rettemp;
 	}
 	else {
 		socklen_t sendersize = sizeof(cliaddr);
-		int rettemp = recvfrom(socketDatagram,msg,sendersize,0, (struct sockaddr *)&cliaddr, &		sendersize);
+		int rettemp = recvfrom(socketDatagram,msg,sendersize,0, (struct sockaddr *)&cliaddr, &sendersize);
     	return rettemp;
 	}
 
 }
+
+
 
 

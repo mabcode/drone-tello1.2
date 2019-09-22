@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 3.5)
 project (telloDrone)
 
 if (CMAKE_COMPILER_IS_GNUCXX)
-    set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_CXX_FLAGS "-std=c++11 -pthread ${CMAKE_CXX_FLAGS}")
 endif()
 
 find_package(Catch2 REQUIRED)
@@ -35,6 +35,8 @@ add_executable(
 	Mission/Mission3.hpp
 	Message/MessageCenter.hpp
 	Message/MessageCenter.cpp
+	DroneState.hpp
+	DroneState.cpp
 )
 
 add_executable(
@@ -44,6 +46,8 @@ add_executable(
 	CommunicationCenter.hpp
 	Message/MessageCenter.hpp
 	Message/MessageCenter.cpp
+	DroneState.hpp
+	DroneState.cpp
 )
 
 

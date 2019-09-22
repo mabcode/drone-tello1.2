@@ -13,17 +13,20 @@
 #include <unistd.h>
 #include <string.h>
 #include <string>
+#include <thread>
 
 class CommunicationCenter {
 	
 	private:
 		int socketDatagram;
 		long retval;
-		struct sockaddr_in cliaddr, servaddr ;
+		struct sockaddr_in cliaddr, servaddr, statusaddr ;
 		int maxRetries;
 		char received[50];
 		MessageCenter *messageC;
-
+		std::thread dataIN;
+		bool stop_thread;
+		
 
 	public:
 		CommunicationCenter(int port, char* address, bool isSim =false);
@@ -33,4 +36,5 @@ class CommunicationCenter {
 		int commandDrone(std::string cmd);
 		long send(const char* msg, int msgsize);
 		int receive(char* command);
+		static void getStatusFromDrone(void);
 	};
