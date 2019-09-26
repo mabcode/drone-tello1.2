@@ -14,11 +14,6 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	servaddr.sin_port = htons(port);
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-	// memset(&statusaddr,0,sizeof(statusaddr));
-    // servaddr.sin_family = AF_INET;
-	// servaddr.sin_port = htons(8090);
-    // servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-
 	if(isSim){
     	//set up address to use for sending
     	memset(&cliaddr,0,sizeof(cliaddr));

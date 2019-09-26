@@ -12,6 +12,7 @@
         "type_traits": "cpp",
         "typeinfo": "cpp",
         "algorithm": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "thread": "cpp"
     }
 }
