@@ -37,5 +37,4 @@ class CommunicationCenter {
 		int receive(char* command);
 		void getStatusFromDrone(int);
 		void socketSetup(sockaddr_in &addr, int port);
-
 	};
