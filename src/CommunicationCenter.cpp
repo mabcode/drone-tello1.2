@@ -22,8 +22,6 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
     	cliaddr.sin_addr.s_addr = htonl(INADDR_ANY);	
     	retval = bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
 	}
-
-	
 }
 
 void CommunicationCenter::getStatusFromDrone(void){

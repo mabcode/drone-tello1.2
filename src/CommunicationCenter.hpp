@@ -35,5 +35,5 @@ class CommunicationCenter {
 		int commandDrone(std::string cmd);
 		long send(const char* msg, int msgsize);
 		int receive(char* command);
-		static void getStatusFromDrone(void);
+		void getStatusFromDrone(void);
 	};

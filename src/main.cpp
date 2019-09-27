@@ -1,5 +1,6 @@
 #include <iostream>
 #include <thread>
+using namespace std;
 
 #include "CommunicationCenter.hpp"
 #include "Mission/MissionCollection.hpp"
@@ -10,6 +11,12 @@
 #define IPADDRESS "127.0.0.1" // localIP
 //#define IPADDRESS "192.168.10.1" // DroneIP
 
+void crap(){
+	while(1){
+		std::cout<<"iweqfh\n";
+		sleep(1);
+	}
+}
 int main() {
 
 	CommunicationCenter *cc = new CommunicationCenter(PORT,(char*)IPADDRESS);
@@ -17,20 +24,20 @@ int main() {
 	
 	int userInput=0;
 
-	std::cout<<"Type 1 to put drone in command mode.\n";
-	std::cin>>userInput;
+	cout<<"Type 1 to put drone in command mode.\n";
+	cin>>userInput;
 
 	if(userInput == 1){
 		cc->startDroneConnection();
 	}
-	std::thread dataIn(&cc->getStatusFromDrone);
-	//std::thread dataIn(&CommunicationCenter::getStatusFromDrone , cc);
+	//std::thread dataIn(&cc->getStatusFromDrone);
+	std::thread dataIn(&CommunicationCenter::getStatusFromDrone , cc);
 	while(userInput != 99){
-		std::cout<<"Enter a mission that you would like to fly between 0 and 2 (99 will exit)\n";
-		std::cin>>userInput;
+		cout<<"Enter a mission that you would like to fly between 0 and 2 (99 will exit)\n";
+		cin>>userInput;
 
 		if(userInput <0 || userInput > 2)
-			std::cout<<"That is not a valid mission. Choose another\n";
+			cout<<"That is not a valid mission. Choose another\n";
 		else{
 			mc->getMission(userInput)->execute(cc);	
 		}
