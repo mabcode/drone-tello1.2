@@ -19,7 +19,7 @@ class CommunicationCenter {
 	private:
 		int socketDatagram;
 		long retval;
-		struct sockaddr_in cliaddr, servaddr, statusaddr ;
+		struct sockaddr_in cliaddr, servaddr ;
 		int maxRetries;
 		char received[50];
 		MessageCenter *messageC;
@@ -35,5 +35,7 @@ class CommunicationCenter {
 		int commandDrone(std::string cmd);
 		long send(const char* msg, int msgsize);
 		int receive(char* command);
-		void getStatusFromDrone(int port);
+		void getStatusFromDrone(int);
+		void socketSetup(sockaddr_in &addr, int port);
+
 	};
