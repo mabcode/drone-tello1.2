@@ -9,9 +9,12 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
     socketDatagram = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
 
 	socketSetup(servaddr,port);
-   
+	socketSetup(flowServaddr,8090);
+	
 	if(isSim){
     	socketSetup(cliaddr,port);
+		socketSetup(flowCliaddr,8090);
+
     	retval = bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
 	}
 }

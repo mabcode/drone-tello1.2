@@ -19,9 +19,9 @@ class CommunicationCenter {
 	private:
 		int socketDatagram;
 		long retval;
-		struct sockaddr_in cliaddr, servaddr ;
+		struct sockaddr_in cliaddr, servaddr, flowCliaddr, flowServaddr;
 		int maxRetries;
-		char received[50];
+		char received[500];
 		MessageCenter *messageC;
 		std::thread dataIN;
 		bool stop_thread;
