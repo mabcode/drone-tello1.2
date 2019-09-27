@@ -11,12 +11,6 @@ using namespace std;
 #define IPADDRESS "127.0.0.1" // localIP
 //#define IPADDRESS "192.168.10.1" // DroneIP
 
-void crap(){
-	while(1){
-		std::cout<<"iweqfh\n";
-		sleep(1);
-	}
-}
 int main() {
 
 	CommunicationCenter *cc = new CommunicationCenter(PORT,(char*)IPADDRESS);
@@ -30,7 +24,6 @@ int main() {
 	if(userInput == 1){
 		cc->startDroneConnection();
 	}
-	//std::thread dataIn(&cc->getStatusFromDrone);
 	std::thread dataIn(&CommunicationCenter::getStatusFromDrone , cc);
 	while(userInput != 99){
 		cout<<"Enter a mission that you would like to fly between 0 and 2 (99 will exit)\n";

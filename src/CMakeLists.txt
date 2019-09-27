@@ -14,6 +14,7 @@ find_package(Catch2 REQUIRED)
 add_executable(
 	tests 
 	tester.cpp)
+
 target_link_libraries(tests Catch2::Catch2)
 
 include(Ctest)
