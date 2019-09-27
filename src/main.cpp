@@ -24,7 +24,7 @@ int main() {
 	if(userInput == 1){
 		cc->startDroneConnection();
 	}
-	std::thread dataIn(&CommunicationCenter::getStatusFromDrone , cc);
+	std::thread dataIn(&CommunicationCenter::getStatusFromDrone , cc, 8890);
 	while(userInput != 99){
 		cout<<"Enter a mission that you would like to fly between 0 and 2 (99 will exit)\n";
 		cin>>userInput;

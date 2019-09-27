@@ -24,10 +24,10 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	}
 }
 
-void CommunicationCenter::getStatusFromDrone(void){
+void CommunicationCenter::getStatusFromDrone(int port){
 	while(1){
-		std::cout<<"good!\n";
-		sleep(1);
+		std::cout<<port<<std::endl;
+		sleep(2);
 	}
 }
 
