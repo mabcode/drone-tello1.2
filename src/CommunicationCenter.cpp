@@ -8,18 +8,10 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	stop_thread=false;
     socketDatagram = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
 
-    //set up bind address
-    memset(&servaddr,0,sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-	servaddr.sin_port = htons(port);
-    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-
+	socketSetup(servaddr,port);
+   
 	if(isSim){
-    	//set up address to use for sending
-    	memset(&cliaddr,0,sizeof(cliaddr));
-    	cliaddr.sin_family = AF_INET;
-		cliaddr.sin_port = htons(port);
-    	cliaddr.sin_addr.s_addr = htonl(INADDR_ANY);	
+    	socketSetup(cliaddr,port);
     	retval = bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
 	}
 }
@@ -88,6 +80,13 @@ int CommunicationCenter::receive(char* msg){
     	return rettemp;
 	}
 
+}
+
+void CommunicationCenter::socketSetup(sockaddr_in &address, int port){
+	memset(&address,0,sizeof(address));
+    address.sin_family = AF_INET;
+	address.sin_port = htons(port);
+    address.sin_addr.s_addr = htonl(INADDR_ANY);
 }
 
 
