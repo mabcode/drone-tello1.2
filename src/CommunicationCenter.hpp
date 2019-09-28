@@ -33,9 +33,10 @@ class CommunicationCenter {
 
 		void startDroneConnection();
 		int commandDrone(std::string cmd);
-		long send(const char* msg, int msgsize);
+		long send(const char* msg, int msgsize, int socket, sockaddr_in &addr);
 		int receive(char* command);
 		void getStatusFromDrone(int);
 		void sendStatusFromDrone(int);
+		void handleUserCommand(void);
 		void socketSetup(sockaddr_in &addr, int port);
 	};

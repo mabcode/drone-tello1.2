@@ -33,6 +33,8 @@ void CommunicationCenter::getStatusFromDrone(int port){
 
 void CommunicationCenter::sendStatusFromDrone(int port){
 	while(1){
+
+
 		std::cout<<port<<std::endl;
 		sleep(2);
 	}
@@ -47,7 +49,7 @@ void CommunicationCenter::startDroneConnection(){
 	std::cout<<"Connecting to drone\n";
 	maxRetries--;
 	std::string request = "command";
-	send(request.c_str(),request.length());
+	send(request.c_str(),request.length(),socketDatagram, servaddr);
 	int temp = receive(received);
 	std::string mess(received);
 	std::cout<<mess<<std::endl;
@@ -61,7 +63,7 @@ void CommunicationCenter::startDroneConnection(){
 }
 
 int CommunicationCenter::commandDrone(std::string cmd){
-	send(cmd.c_str(),cmd.length());
+	send(cmd.c_str(),cmd.length(),socketDatagram,servaddr);
 	receive(received);
 	std::string mess(received);
 	std::cout<<mess<<std::endl;
@@ -73,13 +75,9 @@ int CommunicationCenter::commandDrone(std::string cmd){
 }
 
 //will return the length of the string sent
-long CommunicationCenter::send(const char* command, int commandLength){
-    if(retval==0){
-		return sendto(socketDatagram, command, commandLength, 0, (struct sockaddr *)&servaddr,	sizeof(servaddr));
-	}
-	else{
-		return sendto(socketDatagram, command, commandLength, 0, (struct sockaddr *)&cliaddr,	sizeof(cliaddr));
-	}
+long CommunicationCenter::send(const char* command, int commandLength,int socket, sockaddr_in &addr){
+	return sendto(socket, command, commandLength, 0, (struct sockaddr *)&addr,sizeof(addr));
+	
 }
 
 //will return the length of the message received 
@@ -104,6 +102,18 @@ void CommunicationCenter::socketSetup(sockaddr_in &address, int port){
     address.sin_addr.s_addr = htonl(INADDR_ANY);
 }
 
+
+void CommunicationCenter::handleUserCommand(void){
+    while(1){
+        this->receive(received);
+	    std::cout<<received<<std::endl;
+        std::fill(received, received+500,0);
+        
+        std::string request = "ok";
+	    this->send(request.c_str(),request.length(),socketDatagram, servaddr);
+        
+    }
+}
 
 
 

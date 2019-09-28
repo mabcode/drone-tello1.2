@@ -24,13 +24,13 @@ Mission3 *m3 = new Mission3;
 
 std::string cmd="test";
 
-TEST_CASE("Command is sent to the drone", "[send]"){
-    REQUIRE((cc->send(cmd.c_str(),cmd.length())) != 0);
-    CHECK_FALSE((cc->send(cmd.c_str(),cmd.length())) == 0);
-    REQUIRE((cc->send(cmd.c_str(),cmd.length())) == 4);
-    REQUIRE((cc->send(cmd.c_str(),cmd.length())) != 3);
-    REQUIRE((cc->send(cmd.c_str(),cmd.length())) != 5);
-}
+// TEST_CASE("Command is sent to the drone", "[send]"){
+//     REQUIRE((cc->send(cmd.c_str(),cmd.length())) != 0);
+//     CHECK_FALSE((cc->send(cmd.c_str(),cmd.length())) == 0);
+//     REQUIRE((cc->send(cmd.c_str(),cmd.length())) == 4);
+//     REQUIRE((cc->send(cmd.c_str(),cmd.length())) != 3);
+//     REQUIRE((cc->send(cmd.c_str(),cmd.length())) != 5);
+// }
 
 TEST_CASE("Test the 3 missions exist", "[getMission]"){
     for(int i=0 ; i>3 ;i++){
