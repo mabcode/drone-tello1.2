@@ -4,9 +4,11 @@
 
 CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	retval=0;
+	retval2=0;
 	maxRetries=3;
 	stop_thread=false;
     socketDatagram = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
+	socketDatagram2 = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
 
 	socketSetup(servaddr,port);
 	socketSetup(flowServaddr,8090);
@@ -16,10 +18,20 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 		socketSetup(flowCliaddr,8090);
 
     	retval = bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
+		retval2 = bind(socketDatagram2,(struct sockaddr *)&flowServaddr,sizeof(flowServaddr));
 	}
 }
 
 void CommunicationCenter::getStatusFromDrone(int port){
+	while(1){
+
+
+		std::cout<<port<<std::endl;
+		sleep(2);
+	}
+}
+
+void CommunicationCenter::sendStatusFromDrone(int port){
 	while(1){
 		std::cout<<port<<std::endl;
 		sleep(2);

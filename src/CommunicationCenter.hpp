@@ -17,8 +17,8 @@
 class CommunicationCenter {
 	
 	private:
-		int socketDatagram;
-		long retval;
+		int socketDatagram,socketDatagram2;
+		long retval,retval2;
 		struct sockaddr_in cliaddr, servaddr, flowCliaddr, flowServaddr;
 		int maxRetries;
 		char received[500];
@@ -36,5 +36,6 @@ class CommunicationCenter {
 		long send(const char* msg, int msgsize);
 		int receive(char* command);
 		void getStatusFromDrone(int);
+		void sendStatusFromDrone(int);
 		void socketSetup(sockaddr_in &addr, int port);
 	};
