@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Message/MessageCenter.hpp"
+#include "DroneState.hpp"
 #include "Status.hpp"
 
 #include <netinet/in.h>
@@ -23,6 +24,7 @@ class CommunicationCenter {
 		int maxRetries;
 		char received[500];
 		MessageCenter *messageC;
+		DroneState *droneState;
 		Status *status;
 		std::thread dataIN;
 		bool stop_thread;

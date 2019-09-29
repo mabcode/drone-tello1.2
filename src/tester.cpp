@@ -12,6 +12,7 @@
 #include "Mission/Mission3.cpp"
 #include "Message/MessageCenter.cpp"
 #include "UserInterface.cpp"
+#include "DroneState.cpp"
 
 #define PORT 8889
 #define IPADDRESS "127.0.0.1"

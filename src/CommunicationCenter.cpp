@@ -2,8 +2,9 @@
 #include <iostream>
 
 CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
-	status = new Status;
+	droneState = new DroneState;
 	messageC = new MessageCenter;
+	status = new Status;
 
 	retval=0;
 	retval2=0;
@@ -28,6 +29,7 @@ CommunicationCenter::~CommunicationCenter(){
 	close(socketDatagram);
 	close(socketDatagram2);
 	stop_thread=true;
+	delete droneState;
 	delete status;
 	delete messageC;
 }	

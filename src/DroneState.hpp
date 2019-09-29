@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Status.hpp"
+
 class DroneState
 {
 
@@ -42,7 +44,7 @@ class DroneState
     void setVideoStreamOn(bool videoStreamOn);
     double getCurrentFlightTime();
     void setCurrentFlightTime(double currentFlightTime);
-    void updateFlyingInfo(void); //Status status
+    void updateFlyingInfo(Status status);
     void move(double deltaX, double deltaY, double deltaZ);
     void rotate(int deltaOrientation);
     double getPositionX();
