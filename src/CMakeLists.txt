@@ -43,6 +43,8 @@ add_executable(
 	DroneState.cpp
 	Status.cpp
 	Status.hpp
+	UserInterface.cpp
+	UserInterface.hpp
 )
 
 add_executable(

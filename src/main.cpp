@@ -4,6 +4,7 @@ using namespace std;
 
 #include "CommunicationCenter.hpp"
 #include "Mission/MissionCollection.hpp"
+#include "UserInterface.hpp"
 
 //#define PORT 8890 //Receive state
 #define PORT 9090 //My Simulator
@@ -15,26 +16,13 @@ int main() {
 
 	CommunicationCenter *cc = new CommunicationCenter(PORT,(char*)IPADDRESS);
 	MissionCollection *mc = new MissionCollection();
+	UserInterface *ui = new UserInterface();
 	
-	int userInput=0;
-
-	cout<<"Type 1 to put drone in command mode.\n";
-	cin>>userInput;
-
-	if(userInput == 1){
-		cc->startDroneConnection();
-	}
+	ui->connectPromt(cc);
+	
 	std::thread dataIn(&CommunicationCenter::getStatusFromDrone , cc, 8890);
-	while(userInput != 99){
-		cout<<"Enter a mission that you would like to fly between 0 and 2 (99 will exit)\n";
-		cin>>userInput;
-
-		if(userInput <0 || userInput > 2)
-			cout<<"That is not a valid mission. Choose another\n";
-		else{
-			mc->getMission(userInput)->execute(cc);	
-		}
-	}
+	
+	ui->getUserInput(cc,mc);
 
 	dataIn.join();
 	delete cc;
