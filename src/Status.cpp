@@ -21,10 +21,14 @@ Status::Status(int pitch, int roll, int yaw, int speedX, int speedY, int speedZ,
     this->accelerationZ = accelerationZ;
 }
 
-Status::Status(std::string data)
-{
-    parseData(data);
+Status::Status(){
+    
 }
+
+// Status::Status(std::string data)
+// {
+//     parseData(data);
+// }
 
 // std::string getMessageText()
 // {

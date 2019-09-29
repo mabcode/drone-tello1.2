@@ -28,6 +28,7 @@ class Status
   public:
     Status(int pitch, int roll, int yaw, int speedX, int speedY, int speedZ, int lowTemperature, int highTemperature, int flightDistance, int height, int batteryPercentage, double barometerMeasurement, int motorTime, double accelerationX, double accelerationY, double accelerationZ);
     Status(std::string data);
+    Status();
     //std::string getMessageText();
     std::string getMessageType();
     int getPitch();

@@ -1,8 +1,10 @@
 #include "CommunicationCenter.hpp"
 #include <iostream>
 
-
 CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
+	status = new Status;
+	messageC = new MessageCenter;
+
 	retval=0;
 	retval2=0;
 	maxRetries=3;
@@ -22,28 +24,31 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	}
 }
 
+CommunicationCenter::~CommunicationCenter(){
+	close(socketDatagram);
+	close(socketDatagram2);
+	stop_thread=true;
+	delete status;
+	delete messageC;
+}	
+
 void CommunicationCenter::getStatusFromDrone(int port){
-	while(1){
+	// while(1){
 
 
-		std::cout<<port<<std::endl;
-		sleep(2);
-	}
+	// 	std::cout<<port<<std::endl;
+	// 	sleep(2);
+	// }
 }
 
 void CommunicationCenter::sendStatusFromDrone(int port){
-	while(1){
+	// while(1){
 
 
-		std::cout<<port<<std::endl;
-		sleep(2);
-	}
+	// 	std::cout<<port<<std::endl;
+	// 	sleep(2);
+	// }
 }
-
-CommunicationCenter::~CommunicationCenter(){
-	 close(socketDatagram);
-	 stop_thread=true;
-}	
 
 void CommunicationCenter::startDroneConnection(){
 	std::cout<<"Connecting to drone\n";

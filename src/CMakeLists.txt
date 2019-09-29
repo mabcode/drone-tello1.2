@@ -41,6 +41,8 @@ add_executable(
 	Message/MessageCenter.cpp
 	DroneState.hpp
 	DroneState.cpp
+	Status.cpp
+	Status.hpp
 )
 
 add_executable(
@@ -52,6 +54,8 @@ add_executable(
 	Message/MessageCenter.cpp
 	DroneState.hpp
 	DroneState.cpp
+	Status.cpp
+	Status.hpp
 )
 
 

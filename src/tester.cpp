@@ -3,6 +3,7 @@
 
 #include <typeinfo>
 #include <string>
+#include "Status.cpp"
 #include "CommunicationCenter.cpp"
 #include "Mission/MissionCollection.cpp"
 #include "Mission/Mission.cpp"

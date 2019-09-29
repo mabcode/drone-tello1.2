@@ -1,7 +1,7 @@
-//To connect to socket, code used from https://github.com/butcherg/DatagramSocket/blob/master
 #pragma once
 
 #include "Message/MessageCenter.hpp"
+#include "Status.hpp"
 
 #include <netinet/in.h>
 #include <sys/types.h>
@@ -23,6 +23,7 @@ class CommunicationCenter {
 		int maxRetries;
 		char received[500];
 		MessageCenter *messageC;
+		Status *status;
 		std::thread dataIN;
 		bool stop_thread;
 		
