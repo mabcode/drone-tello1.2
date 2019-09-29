@@ -27,8 +27,7 @@ int main() {
 	dataIn.join();
 	delete cc;
 	delete mc;
-
-
+	delete ui;
 	
 	return 0;
 }

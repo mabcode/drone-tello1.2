@@ -11,9 +11,8 @@ using namespace std;
 //#define IPADDRESS "192.168.10.1"
 
 int main() {
-
     bool isSim=true;
-
+    
 	CommunicationCenter *scc = new CommunicationCenter(PORT,(char*)IPADDRESS,isSim);
     DroneState *ds = new DroneState();
 	
@@ -23,8 +22,6 @@ int main() {
     scc->handleUserCommand();
 
     delete scc;
-    dataOut.join();
-
-	
+    dataOut.join();	
 	return 0;
 }
