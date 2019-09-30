@@ -6,22 +6,17 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	messageC = new MessageCenter;
 	status = new Status;
 
-	retval=0;
-	retval2=0;
 	maxRetries=3;
 	stop_thread=false;
     socketDatagram = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
 	socketDatagram2 = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
 
 	socketSetup(servaddr,port);
-	socketSetup(flowServaddr,8090);
+	socketSetup(flowServaddr,8890);
 	
 	if(isSim){
-    	socketSetup(cliaddr,port);
-		socketSetup(flowCliaddr,8090);
-
-    	retval = bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
-		retval2 = bind(socketDatagram2,(struct sockaddr *)&flowServaddr,sizeof(flowServaddr));
+    	bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
+		bind(socketDatagram2,(struct sockaddr *)&flowServaddr,sizeof(flowServaddr));
 	}
 }
 
@@ -36,17 +31,19 @@ CommunicationCenter::~CommunicationCenter(){
 
 void CommunicationCenter::getStatusFromDrone(void){
 	while(1){
+		this->receive(dStatus, socketDatagram2 ,flowServaddr);
+		std::string mess(dStatus);
+		std::cout<<mess<<std::endl;
 		
-		
-		std::cout<<"from Drone"<<std::endl;
 		sleep(1);
 	}
 }
 
 void CommunicationCenter::sendStatusFromDrone(void){
 	while(1){
-		std::string temp =status->getMessageText();
-		send(temp.c_str(), temp.length(),socketDatagram2,flowCliaddr);
+		//std::string temp =status->getMessageText();
+		std::string temp = "Sent from Drone";
+		this->send(temp.c_str(), temp.length(),socketDatagram2,flowServaddr);
 		usleep(100);
 	}
 }
@@ -100,7 +97,6 @@ void CommunicationCenter::socketSetup(sockaddr_in &address, int port){
 	address.sin_port = htons(port);
     address.sin_addr.s_addr = htonl(INADDR_ANY);
 }
-
 
 void CommunicationCenter::handleUserCommand(void){
     while(1){

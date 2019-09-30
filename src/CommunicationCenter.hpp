@@ -19,8 +19,7 @@ class CommunicationCenter {
 	
 	private:
 		int socketDatagram,socketDatagram2;
-		long retval,retval2;
-		struct sockaddr_in cliaddr, servaddr, flowCliaddr, flowServaddr;
+		struct sockaddr_in servaddr, flowServaddr;
 		int maxRetries;
 		char received[500];
 		char dStatus[5000];
