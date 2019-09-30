@@ -1,5 +1,6 @@
 #include "Status.hpp"
 #include <stdio.h>
+#include <string>
 
 Status::Status(int pitch, int roll, int yaw, int speedX, int speedY, int speedZ, int lowTemperature, int highTemperature, int flightDistance, int height, int batteryPercentage, double barometerMeasurement, int motorTime, double accelerationX, double accelerationY, double accelerationZ)
 {
@@ -30,25 +31,33 @@ Status::Status(){
 //     parseData(data);
 // }
 
-// std::string getMessageText()
-// {
-//     std::string status;
-//     status.format("mid:-1;x:0;y:0;z:0;mpry:0,0,0;pitch:%s;roll:%s;yaw:%s;" +
-//                              "vgx:%s;vgy:%s;vgz:%s;" +
-//                              "templ:%s;temph:%s;" +
-//                              "tof:%s;h:%s;" +
-//                              "bat:%s;baro:%s;" +
-//                              "time:%s;" +
-//                              "agx:%s;agy:%s;agz:%s",
-//                          StringUtils.formatInteger(pitch), StringUtils.formatInteger(roll), StringUtils.formatInteger(yaw),
-//                          StringUtils.formatInteger(speedX), StringUtils.formatInteger(speedY), StringUtils.formatInteger(speedZ),
-//                          StringUtils.formatInteger(lowTemperature), StringUtils.formatInteger(highTemperature),
-//                          StringUtils.formatInteger(flightDistance), StringUtils.formatInteger(height),
-//                          StringUtils.formatInteger(batteryPercentage), StringUtils.formatDouble(barometerMeasurement),
-//                          StringUtils.formatInteger(motorTime),
-//                          StringUtils.formatDouble(accelerationX), StringUtils.formatDouble(accelerationY), StringUtils.formatDouble(accelerationZ));
-//     return status;
-// }
+std::string Status::getMessageText()
+{
+    std::string status;
+
+    status = "mid " + std::to_string(-1)
+            + " x " + std::to_string(0)
+            + " y " + std::to_string(0)
+            + " z " + std::to_string(0)
+            + " mpry " + std::to_string(0) + " " +std::to_string(0)+ " " +std::to_string(0)+ " " +std::to_string(0)
+            + " pitch " + std::to_string(pitch)
+            + " roll " + std::to_string(roll)
+            + " yaw " + std::to_string(yaw)
+            + " vgx " + std::to_string(speedX)
+            + " vgy " + std::to_string(speedY)
+            + " vgz " + std::to_string(speedZ)
+            + " templ " + std::to_string(lowTemperature)
+            + " temph " + std::to_string(highTemperature)
+            + " tof " + std::to_string(flightDistance)
+            + " h " + std::to_string(height)
+            + " bat " + std::to_string(batteryPercentage)
+            + " baro " + std::to_string(barometerMeasurement)
+            + " time " + std::to_string(motorTime)
+            + " agx " + std::to_string(accelerationX)
+            + " agy " + std::to_string(accelerationY)
+            + " agz " + std::to_string(accelerationZ);
+    return status;
+}
 
 std::string Status::getMessageType() { return "status"; }
 

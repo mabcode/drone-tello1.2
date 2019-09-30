@@ -64,7 +64,7 @@ void DroneState::setCurrentFlightTime(double currentFlightTime)
 }
 
 void DroneState::updateFlyingInfo(Status status)
-{ //Status status
+{
     if (!inCommandMode) {
         return;
     }

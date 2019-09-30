@@ -20,7 +20,7 @@ int main() {
 	
 	ui->connectPromt(cc);
 	
-	std::thread dataIn(&CommunicationCenter::getStatusFromDrone , cc, 8890);
+	std::thread dataIn(&CommunicationCenter::getStatusFromDrone , cc);
 	
 	ui->getUserInput(cc,mc);
 

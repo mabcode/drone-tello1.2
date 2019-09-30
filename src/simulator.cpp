@@ -4,7 +4,7 @@ using namespace std;
 
 #include "CommunicationCenter.hpp"
 #include "Mission/MissionCollection.hpp"
-#include "DroneState.hpp"
+#include "Status.hpp"
 
 #define PORT 9090
 #define IPADDRESS "127.0.0.1"
@@ -14,11 +14,11 @@ int main() {
     bool isSim=true;
     
 	CommunicationCenter *scc = new CommunicationCenter(PORT,(char*)IPADDRESS,isSim);
-    DroneState *ds = new DroneState();
+    Status *status = new Status();
 	
     cout<<"Your in the server\n";
 
-    std::thread dataOut(&CommunicationCenter::sendStatusFromDrone, scc, 8890);
+    std::thread dataOut(&CommunicationCenter::sendStatusFromDrone, scc);
     scc->handleUserCommand();
 
     delete scc;

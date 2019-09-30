@@ -34,22 +34,24 @@ CommunicationCenter::~CommunicationCenter(){
 	delete messageC;
 }	
 
-void CommunicationCenter::getStatusFromDrone(int port){
-	// while(1){
+void CommunicationCenter::getStatusFromDrone(void){
+	while(1){
+		
 
 
-	// 	std::cout<<port<<std::endl;
-	// 	sleep(2);
-	// }
+		std::cout<<"from Drone"<<std::endl;
+		sleep(1);
+	}
 }
 
-void CommunicationCenter::sendStatusFromDrone(int port){
-	// while(1){
+void CommunicationCenter::sendStatusFromDrone(void){
+	while(1){
 
+		//send()
 
-	// 	std::cout<<port<<std::endl;
-	// 	sleep(2);
-	// }
+		std::cout<<"to Drone"<<std::endl;
+		sleep(1);
+	}
 }
 
 void CommunicationCenter::startDroneConnection(){

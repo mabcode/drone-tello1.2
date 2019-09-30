@@ -13,6 +13,7 @@
         "variant": "cpp",
         "algorithm": "cpp",
         "iostream": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "string": "cpp"
     }
 }

@@ -23,6 +23,7 @@ class CommunicationCenter {
 		struct sockaddr_in cliaddr, servaddr, flowCliaddr, flowServaddr;
 		int maxRetries;
 		char received[500];
+		char dStatus[5000];
 		MessageCenter *messageC;
 		DroneState *droneState;
 		Status *status;
@@ -38,8 +39,8 @@ class CommunicationCenter {
 		int commandDrone(std::string cmd);
 		long send(const char* msg, int msgsize, int socket, sockaddr_in &addr);
 		int receive(char* command);
-		void getStatusFromDrone(int);
-		void sendStatusFromDrone(int);
+		void getStatusFromDrone(void);
+		void sendStatusFromDrone(void);
 		void handleUserCommand(void);
 		void socketSetup(sockaddr_in &addr, int port);
 	};
