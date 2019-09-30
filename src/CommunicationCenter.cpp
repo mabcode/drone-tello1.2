@@ -37,8 +37,7 @@ CommunicationCenter::~CommunicationCenter(){
 void CommunicationCenter::getStatusFromDrone(void){
 	while(1){
 		
-
-
+		
 		std::cout<<"from Drone"<<std::endl;
 		sleep(1);
 	}
@@ -46,11 +45,9 @@ void CommunicationCenter::getStatusFromDrone(void){
 
 void CommunicationCenter::sendStatusFromDrone(void){
 	while(1){
-
-		//send()
-
-		std::cout<<"to Drone"<<std::endl;
-		sleep(1);
+		std::string temp =status->getMessageText();
+		send(temp.c_str(), temp.length(),socketDatagram2,flowCliaddr);
+		usleep(100);
 	}
 }
 
@@ -59,7 +56,7 @@ void CommunicationCenter::startDroneConnection(){
 	maxRetries--;
 	std::string request = "command";
 	send(request.c_str(),request.length(),socketDatagram, servaddr);
-	int temp = receive(received);
+	int temp = receive(received, socketDatagram,servaddr);
 	std::string mess(received);
 	std::cout<<mess<<std::endl;
 	sleep(1);
@@ -73,7 +70,7 @@ void CommunicationCenter::startDroneConnection(){
 
 int CommunicationCenter::commandDrone(std::string cmd){
 	send(cmd.c_str(),cmd.length(),socketDatagram,servaddr);
-	receive(received);
+	receive(received, socketDatagram,servaddr);
 	std::string mess(received);
 	std::cout<<mess<<std::endl;
 	sleep(2);
@@ -90,17 +87,10 @@ long CommunicationCenter::send(const char* command, int commandLength,int socket
 }
 
 //will return the length of the message received 
-int CommunicationCenter::receive(char* msg){
-	if(retval==0){
-    	socklen_t sendersize = sizeof(servaddr);
-		int rettemp = recvfrom(socketDatagram,msg,sendersize,0, (struct sockaddr *)&servaddr, &sendersize);
-    	return rettemp;
-	}
-	else {
-		socklen_t sendersize = sizeof(cliaddr);
-		int rettemp = recvfrom(socketDatagram,msg,sendersize,0, (struct sockaddr *)&cliaddr, &sendersize);
-    	return rettemp;
-	}
+int CommunicationCenter::receive(char* msg, int socket, sockaddr_in &addr){
+    socklen_t sendersize = sizeof(addr);
+	int rettemp = recvfrom(socket,msg,sendersize,0, (struct sockaddr *)&addr, &sendersize);
+    return rettemp;
 
 }
 
@@ -114,13 +104,12 @@ void CommunicationCenter::socketSetup(sockaddr_in &address, int port){
 
 void CommunicationCenter::handleUserCommand(void){
     while(1){
-        this->receive(received);
+        this->receive(received,socketDatagram,servaddr);;
 	    std::cout<<received<<std::endl;
         std::fill(received, received+500,0);
         
         std::string request = "ok";
 	    this->send(request.c_str(),request.length(),socketDatagram, servaddr);
-        
     }
 }
 
