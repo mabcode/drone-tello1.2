@@ -5,6 +5,7 @@
 
 DroneState::DroneState()
 {
+    inCommandMode=true;
     resetState();
 }
 DroneState::~DroneState()
@@ -63,28 +64,28 @@ void DroneState::setCurrentFlightTime(double currentFlightTime)
     }
 }
 
-void DroneState::updateFlyingInfo(Status status)
+void DroneState::updateFlyingInfo(Status *status)
 {
     if (!inCommandMode) {
         return;
     }
     
-    pitch = status.getPitch();
-    roll = status.getRoll();
-    yaw = status.getYaw();
-    speedX = status.getSpeedX();
-    speedY = status.getSpeedY();
-    speedZ = status.getSpeedZ();
-    lowTemperature = status.getLowTemperature();
-    highTemperature = status.getHighTemperature();
-    flightDistance = status.getFlightDistance();
-    height = status.getHeight();
-    batteryPercentage = status.getBatteryPercentage();
-    barometerMeasurement = status.getBarometerMeasurement();
-    motorTime = status.getMotorTime();
-    accelerationX = status.getAccelerationX();
-    accelerationY = status.getAccelerationY();
-    accelerationZ = status.getAccelerationZ();
+    pitch = status->getPitch();
+    roll = status->getRoll();
+    yaw = status->getYaw();
+    speedX = status->getSpeedX();
+    speedY = status->getSpeedY();
+    speedZ = status->getSpeedZ();
+    lowTemperature = status->getLowTemperature();
+    highTemperature = status->getHighTemperature();
+    flightDistance = status->getFlightDistance();
+    height = status->getHeight();
+    batteryPercentage = status->getBatteryPercentage();
+    barometerMeasurement = status->getBarometerMeasurement();
+    motorTime = status->getMotorTime();
+    accelerationX = status->getAccelerationX();
+    accelerationY = status->getAccelerationY();
+    accelerationZ = status->getAccelerationZ();
 }
 
 void DroneState::move(double deltaX, double deltaY, double deltaZ)
