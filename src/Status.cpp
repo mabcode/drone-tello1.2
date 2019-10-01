@@ -23,7 +23,22 @@ Status::Status(int pitch, int roll, int yaw, int speedX, int speedY, int speedZ,
 }
 
 Status::Status(){
-    
+    this->pitch = 0;
+    this->roll = 0;
+    this->yaw = 0;
+    this->speedX = 0;
+    this->speedY = 0;
+    this->speedZ = 0;
+    this->lowTemperature = 0;
+    this->highTemperature = 0;
+    this->flightDistance = 0;
+    this->height = 0;
+    this->batteryPercentage = 0;
+    this->barometerMeasurement = 0;
+    this->motorTime = 0;
+    this->accelerationX = 0;
+    this->accelerationY = 0;
+    this->accelerationZ = 0;
 }
 
 // Status::Status(std::string data)

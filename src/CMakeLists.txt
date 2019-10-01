@@ -13,7 +13,15 @@ find_package(Catch2 REQUIRED)
 
 add_executable(
 	tests 
-	tester.cpp)
+	tests/tester.cpp
+	tests/test_CommunicationCenter.cpp
+	tests/test_DroneState.cpp
+	tests/test_Status.cpp
+	tests/test_UserInterface.cpp
+	tests/test_MissionCollection.cpp
+	tests/test_Mission.cpp
+	tests/test_Message.cpp
+	)
 
 target_link_libraries(tests Catch2::Catch2)
 
