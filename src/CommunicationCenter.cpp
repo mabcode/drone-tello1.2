@@ -16,7 +16,10 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	
 	if(isSim){
     	bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
+<<<<<<< HEAD
 		
+=======
+>>>>>>> wip
 	}
 	if(!isSim){
 		bind(socketDatagram2,(struct sockaddr *)&flowServaddr,sizeof(flowServaddr));

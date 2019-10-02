@@ -14,7 +14,7 @@ int main() {
     
 	CommunicationCenter *scc = new CommunicationCenter(PORT,(char*)IPADDRESS,isSim);
 	
-    cout<<"Your in the server\n";
+    cout<<"This is the Simulator\n";
 
     std::thread dataOut(&CommunicationCenter::sendStatusFromDrone, scc);
     scc->handleUserCommand();
