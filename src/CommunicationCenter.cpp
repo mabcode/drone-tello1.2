@@ -1,7 +1,7 @@
 #include "CommunicationCenter.hpp"
 #include <iostream>
 
-CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
+CommunicationCenter::CommunicationCenter(int port, char* address, bool Sim){
 	droneState = new DroneState;
 	messageC = new MessageCenter;
 	status = new Status;
@@ -14,10 +14,10 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	socketSetup(servaddr,port);
 	socketSetup(flowServaddr,8890);
 	
-	if(isSim){
+	if(Sim){
     	bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
 	}
-	if(!isSim){
+	if(!Sim){
 		bind(socketDatagram2,(struct sockaddr *)&flowServaddr,sizeof(flowServaddr));
 	}
 }
@@ -80,7 +80,6 @@ int CommunicationCenter::commandDrone(std::string cmd){
 //will return the length of the string sent
 long CommunicationCenter::send(const char* command, int commandLength,int socket, sockaddr_in &addr){
 	return sendto(socket, command, commandLength, 0, (struct sockaddr *)&addr,sizeof(addr));
-	
 }
 
 //will return the length of the message received 
@@ -88,7 +87,6 @@ int CommunicationCenter::receive(char* msg, int socket, sockaddr_in &addr){
     socklen_t sendersize = sizeof(addr);
 	int rettemp = recvfrom(socket,msg,5000,0, (struct sockaddr *)&addr, &sendersize);
     return rettemp;
-
 }
 
 void CommunicationCenter::socketSetup(sockaddr_in &address, int port){
