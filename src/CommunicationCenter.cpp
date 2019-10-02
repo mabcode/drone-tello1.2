@@ -16,6 +16,8 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool isSim){
 	
 	if(isSim){
     	bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
+	}
+	if(!isSim){
 		bind(socketDatagram2,(struct sockaddr *)&flowServaddr,sizeof(flowServaddr));
 	}
 }
@@ -41,8 +43,7 @@ void CommunicationCenter::getStatusFromDrone(void){
 
 void CommunicationCenter::sendStatusFromDrone(void){
 	while(1){
-		//std::string temp =status->getMessageText();
-		std::string temp = "Sent from Drone";
+		std::string temp =status->getMessageText();
 		this->send(temp.c_str(), temp.length(),socketDatagram2,flowServaddr);
 		usleep(100);
 	}
@@ -86,7 +87,7 @@ long CommunicationCenter::send(const char* command, int commandLength,int socket
 //will return the length of the message received 
 int CommunicationCenter::receive(char* msg, int socket, sockaddr_in &addr){
     socklen_t sendersize = sizeof(addr);
-	int rettemp = recvfrom(socket,msg,sendersize,0, (struct sockaddr *)&addr, &sendersize);
+	int rettemp = recvfrom(socket,msg,5000,0, (struct sockaddr *)&addr, &sendersize);
     return rettemp;
 
 }
