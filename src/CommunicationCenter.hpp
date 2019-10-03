@@ -31,7 +31,7 @@ class CommunicationCenter {
 		
 
 	public:
-		CommunicationCenter(int port, char* address, bool isSim =false);
+		CommunicationCenter(int port, int port2, char* address, bool isSim =false);
 		~CommunicationCenter();
 
 		void startDroneConnection();

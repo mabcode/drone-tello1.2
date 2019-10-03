@@ -9,10 +9,18 @@ using namespace std;
 #define IPADDRESS "127.0.0.1"
 //#define IPADDRESS "192.168.10.1"
 
-int main() {
+int main(int argc, char* argv[]) {
+
+    if(argc !=3){
+		cout<<"===================================\n";
+		cout<<"Need args (./sim 9090 8890)\n";
+		cout<<"===================================\n";
+		return 0;
+	}
+
     bool isSim=true;
     
-	CommunicationCenter *scc = new CommunicationCenter(PORT,(char*)IPADDRESS,isSim);
+	CommunicationCenter *scc = new CommunicationCenter(atoi(argv[1]),atoi(argv[2]),(char*)IPADDRESS,isSim);
 	
     cout<<"This is the Simulator\n";
 

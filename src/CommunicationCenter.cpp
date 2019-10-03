@@ -1,7 +1,7 @@
 #include "CommunicationCenter.hpp"
 #include <iostream>
 
-CommunicationCenter::CommunicationCenter(int port, char* address, bool Sim){
+CommunicationCenter::CommunicationCenter(int port, int port2, char* address, bool Sim){
 	droneState = new DroneState;
 	messageC = new MessageCenter;
 	status = new Status;
@@ -12,7 +12,7 @@ CommunicationCenter::CommunicationCenter(int port, char* address, bool Sim){
 	socketDatagram2 = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
 
 	socketSetup(servaddr,port);
-	socketSetup(flowServaddr,8890);
+	socketSetup(flowServaddr,port2);
 	
 	if(Sim){
     	bind(socketDatagram,(struct sockaddr *)&servaddr,sizeof(servaddr));
