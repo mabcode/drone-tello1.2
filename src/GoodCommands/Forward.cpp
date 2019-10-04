@@ -1,7 +1,7 @@
 #include "Forward.hpp"
 
 void Forward::execute(DroneState *ds){
-    ds->move(0,0,0);
+    std::cout<<"forward\n";
 }
 
 Forward::Forward(){

@@ -1,7 +1,7 @@
 #include "Streamoff.hpp"
 
 void Streamoff::execute(DroneState *ds){
-     ds->move(0,0,0);
+    std::cout<<"streamoff\n";
 }
 
 Streamoff::Streamoff(){

@@ -2,7 +2,7 @@
 
 
 void Command::execute(DroneState *ds){
-    ds->move(0,0,0);
+    std::cout<<"command\n";
 }
 
 Command::Command(){

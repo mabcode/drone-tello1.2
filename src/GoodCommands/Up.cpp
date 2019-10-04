@@ -1,7 +1,7 @@
 #include "Up.hpp"
 
 void Up::execute(DroneState *ds){
-     ds->move(0,0,0);
+    std::cout<<"up\n";
 }
 
 Up::Up(){

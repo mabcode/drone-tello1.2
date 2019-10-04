@@ -1,5 +1,6 @@
 #pragma once
 #include "../DroneState.hpp"
+#include <iostream>
 
 class CommandList{
 

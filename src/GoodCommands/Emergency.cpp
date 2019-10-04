@@ -1,7 +1,7 @@
 #include "Emergency.hpp"
 
 void Emergency::execute(DroneState *ds){
-    ds->move(0,0,0);
+    std::cout<<"emergency\n";
 }
 
 Emergency::Emergency(){

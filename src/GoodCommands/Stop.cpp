@@ -1,7 +1,7 @@
 #include "Stop.hpp"
 
 void Stop::execute(DroneState *ds){
-    ds->move(0,0,0);   
+    std::cout<<"stop\n";  
 }
 
 Stop::Stop(){

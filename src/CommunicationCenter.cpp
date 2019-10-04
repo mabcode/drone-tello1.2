@@ -97,7 +97,6 @@ void CommunicationCenter::handleUserCommand(DroneState *_ds, MessageCenter *_ms)
     while(1){
         this->receive(received,socketDatagram,servaddr);;
 		std::string mess(received);
-		
 		cmd = _ms->validate(mess);
 
 		if(cmd == -1){
@@ -108,9 +107,6 @@ void CommunicationCenter::handleUserCommand(DroneState *_ds, MessageCenter *_ms)
 		}
 		
         std::fill(received, received+500,0);
-
-
-
 
         std::string request = "ok";
 	    this->send(request.c_str(),request.length(),socketDatagram, servaddr);
