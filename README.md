@@ -9,10 +9,15 @@ Build Project:
         ====>>>In order compile this file you will need istall or have "Cmake" and "Catch2" <<<====
 Run Project:
 ~flyer~
--In the "build" dir type "./telloDrone" into the terminal
+-In the "build" dir type "./telloDrone 9090 8890 127.0.0.1" into the terminal
 
 ~simulator~
--In the "build" dir type "./sim" into the terminal
+-In the "build" dir type "./sim  9090 8890 127.0.0.1" into the terminal
+
+NOTE:The first value "9090" will be changed to 8889 if you are connecting to the actual drone and the the IP "127.0.0.1" will change to "192.168.10.1"
+        -argv[1] -> First arg defines what port the status messages will use
+        -argv[2] -> Second arg defines what port the commands will use
+        -argv[3] -> third arg defines what IP address that will be used. 
 
 Run Tests:
 -In the build dit type "./tests" into the terminal.
