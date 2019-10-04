@@ -234,7 +234,7 @@ void DroneState::resetFlyingInfo()
     highTemperature = 0;
     flightDistance = 0;
     height = 0;
-    batteryPercentage = 0;
+    batteryPercentage = 100;
     barometerMeasurement = 0.0;
     motorTime = 0;
     accelerationX = 0.0;
