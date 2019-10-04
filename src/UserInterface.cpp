@@ -7,12 +7,13 @@ UserInterface::UserInterface(){
 }
 
 void UserInterface::connectPromt(CommunicationCenter *_cc){
-    std::cout<<"Type 1 to put drone in command mode.\n";
-	std::cin>>userInput;
-
-	if(userInput == 1){
-		_cc->startDroneConnection();
+    while(userInput !=1){
+		std::cout<<"Type 1 to put drone in command mode.\n";
+		std::cin>>userInput;
 	}
+	
+	_cc->startDroneConnection();
+	
 
 }
 void UserInterface::getUserInput(CommunicationCenter *_cc, MissionCollection *_mc){

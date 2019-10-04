@@ -3,7 +3,6 @@
 using namespace std;
 
 #include "CommunicationCenter.hpp"
-#include "Message/MessageCenter.hpp"
 #include "DroneState.hpp"
 
 //#define PORT 9090
@@ -23,17 +22,14 @@ int main(int argc, char* argv[]) {
     
 	CommunicationCenter *scc = new CommunicationCenter(atoi(argv[1]),atoi(argv[2]),argv[3],isSim);
 
-    MessageCenter *message = new MessageCenter();
     DroneState *ds = new DroneState();
     
-	
     cout<<"This is the Simulator\n";
 
     std::thread dataOut(&CommunicationCenter::sendStatusFromDrone, scc);
-    scc->handleUserCommand(ds,message);
+    scc->handleUserCommand(ds);
 
     delete scc;
-    delete message;
     delete ds;
     dataOut.join();	
 	return 0;

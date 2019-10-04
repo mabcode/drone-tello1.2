@@ -1,9 +1,17 @@
 #include "Ccw.hpp"
 
-void Ccw::execute(DroneState *ds){
-    ds->move(0,0,0);
+void Ccw::execute(DroneState *ds)
+{
+    if (ds->hasTakenOff())
+    {
+        std::cout << "ccw\n";
+    }
+    else
+    {
+        std::cout << "You have not taken off yet\n";
+    }
 }
 
-Ccw::Ccw(){
-    
+Ccw::Ccw()
+{
 }

@@ -25,9 +25,9 @@ class CommunicationCenter {
 		char received[500];
 		char dStatus[5000];
 		Status *status;
+		MessageCenter *cmds;
 		std::thread dataIN;
 		bool stop_thread;
-		
 
 	public:
 		
@@ -39,6 +39,6 @@ class CommunicationCenter {
 		int receive(char* command,int socket, sockaddr_in &addr);
 		void getStatusFromDrone(void);
 		void sendStatusFromDrone(void);
-		void handleUserCommand(DroneState *ds, MessageCenter *ms);
+		void handleUserCommand(DroneState *ds);
 		void socketSetup(sockaddr_in &addr, int port);
 	};

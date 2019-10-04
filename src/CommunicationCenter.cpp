@@ -3,6 +3,7 @@
 
 CommunicationCenter::CommunicationCenter(int port, int port2, char* address, bool Sim){
 	status = new Status;
+	cmds = new MessageCenter;
 
 	maxRetries=3;
 	stop_thread=false;
@@ -25,13 +26,14 @@ CommunicationCenter::~CommunicationCenter(){
 	close(socketDatagram2);
 	stop_thread=true;
 	delete status;
+	delete cmds;
 }	
 
 void CommunicationCenter::getStatusFromDrone(void){
 	while(1){
 		this->receive(dStatus, socketDatagram2 ,flowServaddr);
 		std::string mess(dStatus);
-		std::cout<<mess<<std::endl;
+		//std::cout<<mess<<std::endl;
 		sleep(1);
 	}
 }
@@ -92,18 +94,18 @@ void CommunicationCenter::socketSetup(sockaddr_in &address, int port){
     address.sin_addr.s_addr = htonl(INADDR_ANY);
 }
 
-void CommunicationCenter::handleUserCommand(DroneState *_ds, MessageCenter *_ms){
+void CommunicationCenter::handleUserCommand(DroneState *_ds){
 	int cmd = -1;
     while(1){
-        this->receive(received,socketDatagram,servaddr);;
+        this->receive(received,socketDatagram,servaddr);
 		std::string mess(received);
-		cmd = _ms->validate(mess);
+		cmd = cmds->validate(mess);
 
 		if(cmd == -1){
 			std::cout<<"That is not valid command\n";
 		}
 		else{
-			_ms->getMessage(cmd)->execute(_ds);
+			 cmds->getMessage(cmd)->execute(_ds);
 		}
 		
         std::fill(received, received+500,0);
