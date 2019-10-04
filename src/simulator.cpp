@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
     cout<<"This is the Simulator\n";
 
     std::thread dataOut(&CommunicationCenter::sendStatusFromDrone, scc);
-    scc->handleUserCommand();
+    scc->handleUserCommand(ds,message);
 
     delete scc;
     delete message;

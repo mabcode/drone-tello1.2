@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Message/MessageCenter.hpp"
+#include "Message/CommandList.hpp"
 #include "DroneState.hpp"
 #include "Status.hpp"
 
@@ -37,6 +39,6 @@ class CommunicationCenter {
 		int receive(char* command,int socket, sockaddr_in &addr);
 		void getStatusFromDrone(void);
 		void sendStatusFromDrone(void);
-		void handleUserCommand(void);
+		void handleUserCommand(DroneState *ds, MessageCenter *ms);
 		void socketSetup(sockaddr_in &addr, int port);
 	};

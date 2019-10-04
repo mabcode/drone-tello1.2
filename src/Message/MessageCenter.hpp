@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 
-#include "./CommandList.hpp"
+#include "CommandList.hpp"
 #include "../GoodCommands/Command.hpp"   
 #include "../GoodCommands/Takeoff.hpp"   
 #include "../GoodCommands/Land.hpp"      

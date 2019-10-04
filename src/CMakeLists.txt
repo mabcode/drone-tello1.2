@@ -45,10 +45,51 @@ add_executable(
 	Mission/Mission2.hpp
 	Mission/Mission3.cpp
 	Mission/Mission3.hpp
+	DroneState.hpp
+	DroneState.cpp
 	Status.cpp
 	Status.hpp
 	UserInterface.cpp
 	UserInterface.hpp
+	Message/MessageCenter.hpp
+	Message/MessageCenter.cpp
+	Message/CommandList.hpp
+	Message/CommandList.cpp
+
+	GoodCommands/Command.hpp
+	GoodCommands/Command.cpp
+	GoodCommands/Takeoff.hpp
+	GoodCommands/Takeoff.cpp
+	GoodCommands/Land.hpp
+	GoodCommands/Land.cpp
+	GoodCommands/Streamon.hpp
+	GoodCommands/Streamon.cpp
+	GoodCommands/Streamoff.hpp
+	GoodCommands/Streamoff.cpp
+	GoodCommands/Emergency.hpp
+	GoodCommands/Emergency.cpp
+	GoodCommands/Up.hpp
+	GoodCommands/Up.cpp
+	GoodCommands/Down.hpp
+	GoodCommands/Down.cpp
+	GoodCommands/Left.hpp
+	GoodCommands/Left.cpp
+	GoodCommands/Right.hpp
+	GoodCommands/Right.cpp
+	GoodCommands/Forward.hpp
+	GoodCommands/Forward.cpp
+	GoodCommands/Back.hpp
+	GoodCommands/Back.cpp
+	GoodCommands/Cw.hpp
+	GoodCommands/Cw.cpp
+	GoodCommands/Ccw.hpp
+	GoodCommands/Ccw.cpp
+	GoodCommands/Flip.hpp
+	GoodCommands/Flip.cpp
+	GoodCommands/Go.hpp
+	GoodCommands/Go.cpp
+	GoodCommands/Stop.hpp
+	GoodCommands/Stop.cpp
 )
 
 

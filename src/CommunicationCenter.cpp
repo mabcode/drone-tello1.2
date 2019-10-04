@@ -92,12 +92,26 @@ void CommunicationCenter::socketSetup(sockaddr_in &address, int port){
     address.sin_addr.s_addr = htonl(INADDR_ANY);
 }
 
-void CommunicationCenter::handleUserCommand(void){
+void CommunicationCenter::handleUserCommand(DroneState *_ds, MessageCenter *_ms){
+	int cmd = -1;
     while(1){
         this->receive(received,socketDatagram,servaddr);;
-	    std::cout<<received<<std::endl;
+		std::string mess(received);
+		
+		cmd = _ms->validate(mess);
+
+		if(cmd == -1){
+			std::cout<<"That is not valid command\n";
+		}
+		else{
+			_ms->getMessage(cmd)->execute(_ds);
+		}
+		
         std::fill(received, received+500,0);
-        
+
+
+
+
         std::string request = "ok";
 	    this->send(request.c_str(),request.length(),socketDatagram, servaddr);
     }
