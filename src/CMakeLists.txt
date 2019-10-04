@@ -45,45 +45,62 @@ add_executable(
 	Mission/Mission2.hpp
 	Mission/Mission3.cpp
 	Mission/Mission3.hpp
-	Message/MessageCenter.hpp
-	Message/MessageCenter.cpp
-	DroneState.hpp
-	DroneState.cpp
 	Status.cpp
 	Status.hpp
 	UserInterface.cpp
 	UserInterface.hpp
 )
 
+
 add_executable(
 	sim
 	simulator.cpp
 	CommunicationCenter.cpp
 	CommunicationCenter.hpp
-	Message/MessageCenter.hpp
-	Message/MessageCenter.cpp
-	Message/CommandList.hpp
-	Message/GoodCommands/Command.hpp
-	Message/GoodCommands/Takeoff.hpp
-	Message/GoodCommands/Land.hpp
-	Message/GoodCommands/Streamon.hpp
-	Message/GoodCommands/Streamoff.hpp
-	Message/GoodCommands/Emergency.hpp
-	Message/GoodCommands/Up.hpp
-	Message/GoodCommands/Down.hpp
-	Message/GoodCommands/Left.hpp
-	Message/GoodCommands/Right.hpp
-	Message/GoodCommands/Forward.hpp
-	Message/GoodCommands/Back.hpp
-	Message/GoodCommands/Cw.hpp
-	Message/GoodCommands/Ccw.hpp
-	Message/GoodCommands/Flip.hpp
-	Message/GoodCommands/Go.hpp
-	Message/GoodCommands/Stop.hpp
 	DroneState.hpp
 	DroneState.cpp
 	Status.cpp
 	Status.hpp
+
+	Message/MessageCenter.hpp
+	Message/MessageCenter.cpp
+	Message/CommandList.hpp
+	Message/CommandList.cpp
+
+	GoodCommands/Command.hpp
+	GoodCommands/Command.cpp
+	GoodCommands/Takeoff.hpp
+	GoodCommands/Takeoff.cpp
+	GoodCommands/Land.hpp
+	GoodCommands/Land.cpp
+	GoodCommands/Streamon.hpp
+	GoodCommands/Streamon.cpp
+	GoodCommands/Streamoff.hpp
+	GoodCommands/Streamoff.cpp
+	GoodCommands/Emergency.hpp
+	GoodCommands/Emergency.cpp
+	GoodCommands/Up.hpp
+	GoodCommands/Up.cpp
+	GoodCommands/Down.hpp
+	GoodCommands/Down.cpp
+	GoodCommands/Left.hpp
+	GoodCommands/Left.cpp
+	GoodCommands/Right.hpp
+	GoodCommands/Right.cpp
+	GoodCommands/Forward.hpp
+	GoodCommands/Forward.cpp
+	GoodCommands/Back.hpp
+	GoodCommands/Back.cpp
+	GoodCommands/Cw.hpp
+	GoodCommands/Cw.cpp
+	GoodCommands/Ccw.hpp
+	GoodCommands/Ccw.cpp
+	GoodCommands/Flip.hpp
+	GoodCommands/Flip.cpp
+	GoodCommands/Go.hpp
+	GoodCommands/Go.cpp
+	GoodCommands/Stop.hpp
+	GoodCommands/Stop.cpp
 )
 
 

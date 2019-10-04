@@ -3,6 +3,27 @@
 
 MessageCenter::MessageCenter(){
     command=-1;
+    cmdList[0] = new Command;
+    cmdList[1] = new Takeoff;
+    cmdList[2] = new Land;
+    cmdList[3] = new Streamon;
+    cmdList[4] = new Streamoff;
+    cmdList[5] = new Emergency;
+    cmdList[6] = new Up;
+    cmdList[7] = new Down;
+    cmdList[8] = new Left;
+    cmdList[9] = new Right;
+    cmdList[10] = new Forward;
+    cmdList[11] = new Back;
+    cmdList[12] = new Cw;
+    cmdList[13] = new Ccw;
+    cmdList[14] = new Flip;
+    cmdList[15] = new Go;  
+    cmdList[16] = new Stop;
+}
+
+CommandList* MessageCenter::getMessage(int mess){
+    return cmdList[mess];
 }
 
 std::string MessageCenter::decode(char* cmd){

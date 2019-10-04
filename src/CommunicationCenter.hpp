@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Message/MessageCenter.hpp"
 #include "DroneState.hpp"
 #include "Status.hpp"
 
@@ -23,17 +22,15 @@ class CommunicationCenter {
 		int maxRetries;
 		char received[500];
 		char dStatus[5000];
-		MessageCenter *messC;
-		DroneState *droneState;
 		Status *status;
 		std::thread dataIN;
 		bool stop_thread;
 		
 
 	public:
+		
 		CommunicationCenter(int port, int port2, char* address, bool isSim =false);
 		~CommunicationCenter();
-
 		void startDroneConnection();
 		int commandDrone(std::string cmd);
 		long send(const char* msg, int msgsize, int socket, sockaddr_in &addr);

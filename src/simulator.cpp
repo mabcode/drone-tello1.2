@@ -3,7 +3,8 @@
 using namespace std;
 
 #include "CommunicationCenter.hpp"
-#include "Mission/MissionCollection.hpp"
+#include "Message/MessageCenter.hpp"
+#include "DroneState.hpp"
 
 //#define PORT 9090
 //#define IPADDRESS "127.0.0.1"
@@ -21,6 +22,10 @@ int main(int argc, char* argv[]) {
     bool isSim=true;
     
 	CommunicationCenter *scc = new CommunicationCenter(atoi(argv[1]),atoi(argv[2]),argv[3],isSim);
+
+    MessageCenter *message = new MessageCenter();
+    DroneState *ds = new DroneState();
+    
 	
     cout<<"This is the Simulator\n";
 
@@ -28,6 +33,8 @@ int main(int argc, char* argv[]) {
     scc->handleUserCommand();
 
     delete scc;
+    delete message;
+    delete ds;
     dataOut.join();	
 	return 0;
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include "../CommunicationCenter.hpp"
 
-
 class Mission{
 
     private:

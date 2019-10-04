@@ -2,8 +2,6 @@
 #include <iostream>
 
 CommunicationCenter::CommunicationCenter(int port, int port2, char* address, bool Sim){
-	droneState = new DroneState;
-	messC = new MessageCenter;
 	status = new Status;
 
 	maxRetries=3;
@@ -26,9 +24,7 @@ CommunicationCenter::~CommunicationCenter(){
 	close(socketDatagram);
 	close(socketDatagram2);
 	stop_thread=true;
-	delete droneState;
 	delete status;
-	delete messC;
 }	
 
 void CommunicationCenter::getStatusFromDrone(void){
