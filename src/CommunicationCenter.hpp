@@ -23,7 +23,7 @@ class CommunicationCenter {
 		int maxRetries;
 		char received[500];
 		char dStatus[5000];
-		MessageCenter *messageC;
+		MessageCenter *messC;
 		DroneState *droneState;
 		Status *status;
 		std::thread dataIN;

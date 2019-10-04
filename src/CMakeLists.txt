@@ -62,6 +62,24 @@ add_executable(
 	CommunicationCenter.hpp
 	Message/MessageCenter.hpp
 	Message/MessageCenter.cpp
+	Message/CommandList.hpp
+	Message/GoodCommands/Command.hpp
+	Message/GoodCommands/Takeoff.hpp
+	Message/GoodCommands/Land.hpp
+	Message/GoodCommands/Streamon.hpp
+	Message/GoodCommands/Streamoff.hpp
+	Message/GoodCommands/Emergency.hpp
+	Message/GoodCommands/Up.hpp
+	Message/GoodCommands/Down.hpp
+	Message/GoodCommands/Left.hpp
+	Message/GoodCommands/Right.hpp
+	Message/GoodCommands/Forward.hpp
+	Message/GoodCommands/Back.hpp
+	Message/GoodCommands/Cw.hpp
+	Message/GoodCommands/Ccw.hpp
+	Message/GoodCommands/Flip.hpp
+	Message/GoodCommands/Go.hpp
+	Message/GoodCommands/Stop.hpp
 	DroneState.hpp
 	DroneState.cpp
 	Status.cpp
