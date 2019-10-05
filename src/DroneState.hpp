@@ -31,7 +31,7 @@ class DroneState
     double accelerationZ;
     int orientation;
     void resetState();
-    void resetFlyingInfo();
+    
 
   public:
     DroneState();
@@ -67,4 +67,6 @@ class DroneState
     double getBarometerMeasurement();
     int getMotorTime();
     int getOrientation();
+    int getValue(std::string);
+    void resetFlyingInfo();
 };

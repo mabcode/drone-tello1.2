@@ -1,6 +1,6 @@
 #include "Stop.hpp"
 
-void Stop::execute(DroneState *ds)
+void Stop::execute(DroneState *ds, std::string cmd)
 {
     if (ds->hasTakenOff())
     {

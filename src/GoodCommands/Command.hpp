@@ -7,5 +7,5 @@ class Command : public CommandList{
 
     public:
         Command();
-        void execute(DroneState *ds);
+        void execute(DroneState *ds, std::string cmd);
 };

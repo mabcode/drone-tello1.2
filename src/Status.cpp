@@ -47,6 +47,37 @@ Status::Status(std::string data)
     parseData(data);
 }
 
+void Status::updateStatus(std::string stats){
+    if (stats == "" || stats.empty())
+        return;
+
+    int na=0;
+    std::string cmd;
+    std::stringstream ss(stats);
+
+    ss  >> cmd >> na
+        >> cmd >> na
+        >> cmd >> na
+        >> cmd >> na    
+        >> cmd >> na >> na >> na    
+        >> cmd >> this->pitch
+        >> cmd >> this->roll
+        >> cmd >> this->yaw  
+        >> cmd >> this->speedX    
+        >> cmd >> this->speedY
+        >> cmd >> this->speedZ
+        >> cmd >> this->lowTemperature
+        >> cmd >> this->highTemperature
+        >> cmd >> this->flightDistance
+        >> cmd >> this->height
+        >> cmd >> this->batteryPercentage
+        >> cmd >> this->barometerMeasurement
+        >> cmd >> this->motorTime
+        >> cmd >> this->accelerationX
+        >> cmd >> this->accelerationY
+        >> cmd >> this->accelerationZ;
+}
+
 std::string Status::getMessageText()
 {
     std::string status;

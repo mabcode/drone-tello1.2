@@ -7,5 +7,5 @@ class Emergency : public CommandList{
 
     public:
         Emergency();
-        void execute(DroneState *ds);
+        void execute(DroneState *ds, std::string cmd);
 };

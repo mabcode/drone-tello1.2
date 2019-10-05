@@ -7,5 +7,5 @@ class Ccw : public CommandList{
 
     public:
         Ccw();
-        void execute(DroneState *ds);
+        void execute(DroneState *ds, std::string cmd);
 };

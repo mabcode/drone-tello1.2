@@ -7,5 +7,5 @@ class Up : public CommandList{
 
     public:
     Up();
-        void execute(DroneState *ds);
+        void execute(DroneState *ds, std::string cmd);
 };

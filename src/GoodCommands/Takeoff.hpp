@@ -7,5 +7,5 @@ class Takeoff : public CommandList{
 
     public:
         Takeoff();
-        void execute(DroneState *ds);
+        void execute(DroneState *ds, std::string cmd);
 };

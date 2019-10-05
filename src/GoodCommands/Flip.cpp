@@ -1,6 +1,6 @@
 #include "Flip.hpp"
 
-void Flip::execute(DroneState *ds)
+void Flip::execute(DroneState *ds, std::string cmd)
 {
     if (ds->hasTakenOff())
     {

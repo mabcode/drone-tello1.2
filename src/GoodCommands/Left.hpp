@@ -7,5 +7,5 @@ class Left : public CommandList{
 
     public:
         Left();
-        void execute(DroneState *ds);
+        void execute(DroneState *ds, std::string cmd);
 };

@@ -1,5 +1,5 @@
 # include "./CommandList.hpp"
 
-void CommandList::execute(DroneState *ds){
+void CommandList::execute(DroneState *ds, std::string cmd){
     
 }

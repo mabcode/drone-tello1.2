@@ -211,6 +211,15 @@ int DroneState::getOrientation()
     return orientation;
 }
 
+int DroneState::getValue(std::string cmd){
+    int x = 0;
+    std::string temp;
+    std::stringstream ss(cmd);
+    ss>> temp >> x;
+    return x;
+
+}
+
 void DroneState::resetState()
 {
     videoStreamOn = false;

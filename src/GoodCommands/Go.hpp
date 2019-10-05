@@ -7,5 +7,5 @@ class Go : public CommandList{
 
     public:
         Go();
-        void execute(DroneState *ds);
+        void execute(DroneState *ds, std::string cmd);
 };

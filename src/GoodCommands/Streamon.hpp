@@ -7,5 +7,5 @@ class Streamon : public CommandList{
 
     public:
         Streamon();
-        void execute(DroneState *ds);
+        void execute(DroneState *ds, std::string cmd);
 };

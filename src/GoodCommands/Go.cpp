@@ -1,6 +1,6 @@
 #include "Go.hpp"
 
-void Go::execute(DroneState *ds)
+void Go::execute(DroneState *ds, std::string cmd)
 {
     if (ds->hasTakenOff())
     {

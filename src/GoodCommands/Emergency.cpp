@@ -1,10 +1,11 @@
 #include "Emergency.hpp"
 
-void Emergency::execute(DroneState *ds)
+void Emergency::execute(DroneState *ds, std::string cmd)
 {
     if (ds->hasTakenOff())
     {
         std::cout << "emergency\n";
+        ds->resetFlyingInfo();
     }
     else
     {

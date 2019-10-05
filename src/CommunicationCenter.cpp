@@ -33,8 +33,9 @@ void CommunicationCenter::getStatusFromDrone(void){
 	while(1){
 		this->receive(dStatus, socketDatagram2 ,flowServaddr);
 		std::string mess(dStatus);
-		//std::cout<<mess<<std::endl;
-		sleep(1);
+		status->updateStatus(mess);
+		std::cout<<status->getMessageText();
+		sleep(3);
 	}
 }
 
@@ -105,7 +106,7 @@ void CommunicationCenter::handleUserCommand(DroneState *_ds){
 			std::cout<<"That is not valid command\n";
 		}
 		else{
-			 cmds->getMessage(cmd)->execute(_ds);
+			 cmds->getMessage(cmd)->execute(_ds, mess);
 		}
 		
         std::fill(received, received+500,0);

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <sstream>
 
 class Status
 {
@@ -28,6 +29,7 @@ class Status
     Status();
     std::string getMessageText();
     std::string getMessageType();
+    void updateStatus(std::string stats);
     int getPitch();
     int getRoll();
     int getYaw();

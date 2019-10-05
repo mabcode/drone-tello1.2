@@ -1,11 +1,12 @@
 #include "Land.hpp"
 
-void Land::execute(DroneState *ds)
+void Land::execute(DroneState *ds, std::string cmd)
 {
     if (ds->hasTakenOff())
     {
         std::cout << "land\n";
         ds->setHasTakenOff(false);
+        ds->resetFlyingInfo();
     }
     else
     {

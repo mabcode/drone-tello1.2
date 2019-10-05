@@ -7,5 +7,5 @@ class Forward : public CommandList{
 
     public:
         Forward();
-        void execute(DroneState *ds);
+        void execute(DroneState *ds, std::string cmd);
 };
